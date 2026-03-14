@@ -227,8 +227,8 @@
                         <span class="post-sub">${post.emoji || '📝'} r/${post.subreddit || 'reddit'}</span>
                         <span class="post-cat">${post.category || ''}</span>
                     </div>
-                    <div class="post-title">${escapeHtml(post.title || '')}</div>
-                    ${post.content ? `<div class="post-preview">${escapeHtml(post.content.substring(0, 200))}...</div>` : ''}
+                    <div class="post-title">${escapeHtml(post.titleRu || post.title || '')}</div>
+                    ${post.contentRu ? `<div class="post-preview">${escapeHtml(post.contentRu.substring(0, 200))}...</div>` : (post.content ? `<div class="post-preview">${escapeHtml(post.content.substring(0, 200))}...</div>` : '')}
                     <div class="post-footer">
                         <span>${post.fetchedAt ? formatDate(post.fetchedAt) : (post.postedAt ? formatDate(post.postedAt) : '')}</span>
                         ${post.link ? `<a class="post-link" href="${post.link}" target="_blank">Reddit →</a>` : ''}
