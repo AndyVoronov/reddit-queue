@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Queue - @best_for_reddit</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1b;
+            color: #d7dadc;
+            min-height: 100vh;
+            padding: 16px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        h1 {
+            font-size: 20px;
+            color: #FF4500;
+        }
+        .stats {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+        }
+        .stat { color: #818384; }
+        .stat span { color: #FF4500; font-weight: 600; }
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 8px 16px;
+            background: #272729;
+            border: none;
+            border-radius: 8px;
+            color: #818384;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .tab.active {
+            background: #FF4500;
+            color: white;
+        }
+        .filter {
+            margin-bottom: 16px;
+        }
+        select {
+            padding: 8px 12px;
+            background: #272729;
+            border: 1px solid #343536;
+            border-radius: 6px;
+            color: #d7dadc;
+            font-size: 14px;
+            width: 100%;
+            max-width: 300px;
+        }
+        .posts {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .post {
+            background: #272729;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #343536;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        .post-sub {
+            color: #FF4500;
+            font-weight: 600;
+        }
+        .post-cat {
+            color: #818384;
+            background: #343536;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .post-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .post-preview {
+            font-size: 13px;
+            color: #818384;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .post-footer {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #818384;
+            display: flex;
+            justify-content: space-between;
+        }
+        .post-link {
+            color: #0079d3;
+            text-decoration: none;
+        }
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #818384;
+        }
+        .refresh {
+            background: #FF4500;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .updated {
+            font-size: 12px;
+            color: #818384;
+            margin-top: 16px;
+        }
+        @media (min-width: 768px) {
+            .posts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📝 Reddit Queue</h1>
+        <div class="stats">
+            <div class="stat">Очередь: <span id="queueCount">0</span></div>
+            <div class="stat">Опубликовано: <span id="postedCount">0</span></div>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('queue')">📬 Очередь</button>
+        <button class="tab" onclick="showTab('posted')">✅ Опубликовано</button>
+        <button class="refresh" onclick="loadData()">🔄</button>
+    </div>
+
+    <div class="filter">
+        <select id="categoryFilter" onchange="render()">
+            <option value="">Все категории</option>
+            <option value="история">💀 Истории</option>
+            <option value="работа">😈 Работа</option>
+            <option value="факты">🧠 Факты</option>
+            <option value="жизнь">🍃 Жизнь</option>
+            <option value="советы">💡 Советы</option>
+            <option value="отношения">💔 Отношения</option>
+            <option value="деньги">💰 Деньги</option>
+            <option value="спор">🤔 AITA</option>
+        </select>
+    </div>
+
+    <div class="posts" id="posts"></div>
+    <div class="updated" id="updated"></div>
+
+    <script>
+        const DATA_URL = 'https://raw.githubusercontent.com/AndyVoronov/reddit-queue/main/data/';
+        let queue = [];
+        let posted = [];
+        let currentTab = 'queue';
+
+        async function loadJSON(file) {
+            try {
+                const res = await fetch(DATA_URL + file);
+                return await res.json();
+            } catch {
+                return [];
+            }
+        }
+
+        async function loadData() {
+            document.getElementById('posts').innerHTML = '<div class="empty">Загрузка...</div>';
+
+            queue = await loadJSON('posts-queue.json');
+            posted = await loadJSON('posted-log.json');
+
+            document.getElementById('queueCount').textContent = queue.length;
+            document.getElementById('postedCount').textContent = posted.length;
+            document.getElementById('updated').textContent = 'Обновлено: ' + new Date().toLocaleTimeString('ru-RU');
+
+            render();
+        }
+
+        function showTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.textContent.includes(tab === 'queue' ? 'Очередь' : 'Опубликовано')));
+            render();
+        }
+
+        function render() {
+            const filter = document.getElementById('categoryFilter').value;
+            let items = currentTab === 'queue' ? queue : posted;
+
+            if (filter) {
+                items = items.filter(p => p.category === filter);
+            }
+
+            if (items.length === 0) {
+                document.getElementById('posts').innerHTML = '<div class="empty">Пусто</div>';
+                return;
+            }
+
+            document.getElementById('posts').innerHTML = items.slice(0, 50).map(post => `
+                <div class="post">
+                    <div class="post-header">
+                        <span class="post-sub">${post.emoji || '📝'} r/${post.subreddit || 'reddit'}</span>
+                        <span class="post-cat">${post.category || ''}</span>
+                    </div>
+                    <div class="post-title">${escapeHtml(post.title || '')}</div>
+                    ${post.content ? `<div class="post-preview">${escapeHtml(post.content.substring(0, 200))}...</div>` : ''}
+                    <div class="post-footer">
+                        <span>${post.fetchedAt ? formatDate(post.fetchedAt) : (post.postedAt ? formatDate(post.postedAt) : '')}</span>
+                        ${post.link ? `<a class="post-link" href="${post.link}" target="_blank">Reddit →</a>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatDate(str) {
+            if (!str) return '';
+            const d = new Date(str);
+            return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
+        }
+
+        loadData();
+        setInterval(loadData, 60000); // Refresh every minute
+    </script>
+</body>
+</html>
