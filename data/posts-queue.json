@@ -1,5 +1,55 @@
 [
   {
+    "id": "t3_1s1op4u",
+    "subreddit": "lifeprotips",
+    "category": "советы",
+    "emoji": "💡",
+    "title": "LPT: If you're trying to drink less soda, take a sugarfree mint/peppermint everytime you're in the mood for one.",
+    "content": "A friend adviced this to me. I was highly skeptical thinking I'd still want my Pepsi after I had one but the craving was entirely gone everytime. Obviously be careful with overdosing but typically 3-5 sugar free ones a day should do the trick for you. It completely cured my sweet tooth in a matter of a couple months. Note: This is obviously a short term strategy, don't consume too many :) It’s similar to brushing your teeth and suddenly not wanting to eat anything sweet. \n   submitted by    /u/ImportantClock5486  [link]   [comments]",
+    "link": "https://www.reddit.com/r/LifeProTips/comments/1s1op4u/lpt_if_youre_trying_to_drink_less_soda_take_a/",
+    "fetchedAt": "2026-03-24T06:00:05.584Z"
+  },
+  {
+    "id": "t3_1s1rck8",
+    "subreddit": "simpleliving",
+    "category": "жизнь",
+    "emoji": "🍃",
+    "title": "Simple living for people trapped in the rat race",
+    "content": "Hi guys, ive trying to simplify my life, the main reason? i feel burned out, i come home exhausted and when is time to have a little time (sometimes i catch'em having dinner, showering or about to sleep, some days not even that) with my kids, my patience and mental energy is gone.  some context: im married with 2 kids (7 and 3), my wife works as a teacher and im an accountant (i own a small local firm with my father) i live in México, in Guadalajara, one of the biggest cities, i live close to my work so traffic is not a problem most days. I love reading, writing and painting, i love watching movies and having coffee in the morning, but i live in such a rush that i dont have time to really \"ENJOY\". If i read at night i fall sleep in the second page. I know its \"normal\" that this stage in my life is chaotic (mainly because of kids) but i want to improve it a little bit and make it simplier, i want to be better and healthier for them.  Any advice is greatly appreciated. \n   submitted by    /u/Batistasuperfan  [link]   [comments]",
+    "link": "https://www.reddit.com/r/simpleliving/comments/1s1rck8/simple_living_for_people_trapped_in_the_rat_race/",
+    "fetchedAt": "2026-03-24T06:00:04.599Z"
+  },
+  {
+    "id": "t3_1s1kov2",
+    "subreddit": "todayilearned",
+    "category": "факты",
+    "emoji": "🧠",
+    "title": "TIL humans neurologically enters adulthood at the age of 32 on average",
+    "content": "submitted by    /u/ConsciousStop  [link]   [comments]",
+    "link": "https://www.reddit.com/r/todayilearned/comments/1s1kov2/til_humans_neurologically_enters_adulthood_at_the/",
+    "fetchedAt": "2026-03-24T06:00:03.567Z"
+  },
+  {
+    "id": "t3_1s1u951",
+    "subreddit": "todayilearned",
+    "category": "факты",
+    "emoji": "🧠",
+    "title": "TIL that while the cancellation of the &quot;Batgirl&quot; film sparked mixed reactions, Michael Keaton, who reprised his role as Batman in the film, was unfazed by it being shelved, saying, “I didn’t care one way or another. Big, fun, nice check.”",
+    "content": "submitted by    /u/Giff95  [link]   [comments]",
+    "link": "https://www.reddit.com/r/todayilearned/comments/1s1u951/til_that_while_the_cancellation_of_the_batgirl/",
+    "fetchedAt": "2026-03-24T06:00:03.567Z"
+  },
+  {
+    "id": "t3_1s1pgb8",
+    "subreddit": "MaliciousCompliance",
+    "category": "работа",
+    "emoji": "😈",
+    "title": "Just prevent anyone from sending messages to a group unless they are in that group",
+    "content": "This is a technology issue from a while back -- pre-cloud days. We were running Microsoft Exchange on premise at the time. I was working in an organization where I was in charge of all the technology and cybersecurity. Every Monday morning, we had a senior management team meeting that went a laborious 4 hours (on average). On this particular day, one of the items that came up was a complaint that because some random worker had sent some random email to the \"All Employees\" group, they wanted to restrict who could send to that group. I was fine with that. Then the CEO decided to extend that to about 10 more groups.  Me: \"We should be careful with that. Who do you want to have access?\" CEO: \"Only the senior team, and the members of each group should be able to send to each group.\" Me: \"You're going to want to make exceptions, because there are valid scenarios where...\" CEO: &lt;interrupting&gt; \"I know what I want. Just block it for the following 10 groups, unless the person is a member of that group.\" Me: \"It has been my experience that requests of this type result in unintended consequences, and I'm trying to mitigate that.\" CEO: \"Was I unclear in my request? This is not a discussion.\" Me: \"No problem. You were very clear. You want the following groups to only receive mail from members of those individual groups.\" CEO: \"Thank you.\"   When the meeting broke for lunch, the first thing I did was go back to my desk and edit the configuration for each of the 10 groups, to make it so that they would only accept mail from members of that group, plus the Senior Team. I sent an update to the \"Senior Management Team\" distribution, which I was a part of, and said, \"As per this morning's directive, the following groups have been configured to only accept messages sent by an email account that is a member of that group itself, plus this distribution.\" And then I waited. It didn't take long. By the third day, we had experienced the following unintended consequences: \nAutomated messages, including reports, that would normally go to a few individuals, and also be CC'd to one of the 10 groups, did not make it to those groups. Automated messages, including reports, that ONLY went to one of the 10 groups, did not make it to any inbox. The CEO's executive assistant was told to send a message to the \"Senior Management Team\" and she got a bounce message when she tried. \nThe bounce message that the EA received was the one that broke blew everything up. Then the CFO realized that he was missing his daily reports. And so did Legal.  This lead to them asking me to generate a report of all messages that bounced. It was not a pretty report. About 17 emails, mostly reports, had failed in the 3 days.   Them: \"How do we get those missed reports back?\" Me: \"You call up the companies or persons that were responsible for sending them, and ask for them to send it to a new address. If you want to use the same address, you tell me what that address is, and I can add it as a sender ex",
+    "link": "https://www.reddit.com/r/MaliciousCompliance/comments/1s1pgb8/just_prevent_anyone_from_sending_messages_to_a/",
+    "fetchedAt": "2026-03-24T06:00:02.719Z"
+  },
+  {
     "id": "t3_1s1lx8n",
     "subreddit": "confessions",
     "category": "исповедь",
